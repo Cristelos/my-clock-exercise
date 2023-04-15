@@ -1,3 +1,4 @@
+import './Countdown.css'
 import { useEffect, useState } from "react"
 
 export default function Countdown(){
@@ -39,8 +40,8 @@ export default function Countdown(){
 
 
     return(
-        <div className="contdown">
-            <h2>{time}</h2>
+        <div >
+            <h2 className="contdown">{time}</h2>
             <input type="date" name="fecha" value={date} onChange={handelInputChange}/>
         </div>
     )

@@ -1,3 +1,5 @@
+import './DigitalClock.css';
+
 import { useEffect, useState } from "react"
 
 export default function DigitalClock(){
@@ -12,8 +14,8 @@ export default function DigitalClock(){
     }, [])
 
     return(
-        <div className="reloj-digital">
-            <h1>{digital}</h1>
+        <div>
+            <h2 className="reloj-digital">{digital}</h2>
         </div>
     )
 }
