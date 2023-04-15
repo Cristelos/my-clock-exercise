@@ -3,12 +3,20 @@ import { useEffect, useState } from "react"
 export default function Countdown(){
 
     const [time, setTime] = useState("");
+    const [date, setDate] = useState("");
+
+    const handelInputChange = ({target}) => {
+        setDate(new Date(target.value));
+        setTime();
+    }
 
     useEffect(() => {
-        let countDown = new Date("August 28, 2021 13:21:00").getTime();
+        
         let x = setInterval(()=>{
+
             let now = new Date().getTime();
-            let distance = countDown - now;
+            let distance = date - now;
+
             let days = Math.floor(distance / (1000 * 60 * 60 * 24));
             let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -21,13 +29,19 @@ export default function Countdown(){
                 setTime("COUNTDOWN FINISHED");
               }
 
-        }, 1000)
-    },[])
+        }, 1000);
+
+        return () => {
+            clearInterval(x);
+        }
+
+    },[date])
 
 
     return(
         <div className="contdown">
             <h2>{time}</h2>
+            <input type="date" name="fecha" value={date} onChange={handelInputChange}/>
         </div>
     )
 }
